@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zaiden West — 100K for Young Umpires</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#111827;--muted:#667085;--accent:#16a34a;--accent2:#0f766e;--dark:#0b1220}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+nav{position:sticky;top:0;z-index:10;background:rgba(11,18,32,.96);color:white;display:flex;justify-content:space-between;align-items:center;padding:14px 6%;backdrop-filter:blur(8px)}
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:700;font-size:.95rem}
+.logo{font-size:1.15rem;font-weight:900}
+.hero{background:linear-gradient(135deg,#0b1220,#164e3a);color:white;padding:80px 6% 70px}
+.hero-inner{max-width:1050px;margin:auto;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center}
+.badge{display:inline-block;background:#dcfce7;color:#14532d;padding:7px 12px;border-radius:999px;font-weight:800;margin-bottom:18px}
+h1{font-size:clamp(2.5rem,7vw,5.2rem);line-height:.95;margin:0 0 20px}
+.hero p{font-size:1.2rem;max-width:700px;color:#dbeafe}
+.btn{display:inline-block;background:#22c55e;color:#052e16;text-decoration:none;padding:14px 22px;border-radius:12px;font-weight:900;margin:8px 8px 0 0;border:0;cursor:pointer}
+.btn.secondary{background:white;color:#111827}
+.goal-card{background:white;color:var(--text);border-radius:24px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.goal-number{font-size:3rem;font-weight:900;color:var(--accent)}
+.progress{height:18px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin:15px 0}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#14b8a6);transition:.4s}
+.container{max-width:1050px;margin:auto;padding:60px 6%}
+section{scroll-margin-top:80px}
+.section-title{font-size:2rem;margin:0 0 10px}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.card{background:var(--card);padding:26px;border-radius:20px;box-shadow:0 8px 25px rgba(15,23,42,.06)}
+.card h3{margin-top:0}
+.big{font-size:2.2rem;font-weight:900}
+.steps{counter-reset:step}.step{position:relative;padding-left:58px;margin:25px 0}.step:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:#dcfce7;color:#166534;display:grid;place-items:center;font-weight:900}
+.edit-note{background:#fff7ed;border:1px solid #fed7aa;padding:14px 16px;border-radius:12px;margin:20px 0;color:#9a3412}
+[contenteditable="true"]{outline:2px dashed transparent;border-radius:6px}
+[contenteditable="true"]:focus{outline-color:#22c55e;background:#f0fdf4}
+.editor{position:fixed;right:18px;bottom:18px;background:var(--dark);color:white;padding:12px 15px;border-radius:14px;z-index:20;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.editor button{border:0;border-radius:8px;padding:8px 10px;margin-left:5px;cursor:pointer;font-weight:700}
+footer{background:#0b1220;color:#cbd5e1;padding:40px 6%;text-align:center}
+@media(max-width:760px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:1fr}nav div:last-child{display:none}.hero{padding-top:55px}.container{padding-top:45px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo" contenteditable="true">ZAIDEN WEST</div>
+  <div>
+    <a href="#challenge">Challenge</a>
+    <a href="#why">Why</a>
+    <a href="#progress">Progress</a>
+    <a href="#support">Support</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="badge" contenteditable="true">NOVEMBER 2026 • 100K CHALLENGE</span>
+      <h1 contenteditable="true">100K for Young Umpires</h1>
+      <p contenteditable="true">I'm Zaiden West. This November, I'm running 100 kilometres to raise money and awareness for young umpires' mental health across Australian sport.</p>
+      <a class="btn" href="#support">Support the challenge</a>
+      <a class="btn secondary" href="#progress">See my progress</a>
+    </div>
+    <div class="goal-card" id="progress">
+      <div class="muted">Fundraising goal</div>
+      <div class="goal-number">$1,000</div>
+      <div class="muted"><span id="raisedText">$0</span> raised</div>
+      <div class="progress"><div class="progress-bar" id="bar"></div></div>
+      <div><strong id="percent">0%</strong> of goal</div>
+      <div style="margin-top:16px">
+        <label class="muted">Update amount raised:</label><br>
+        <input id="raisedInput" type="number" min="0" value="0" style="width:120px;padding:10px;border:1px solid #ddd;border-radius:8px;margin-top:6px">
+        <button class="btn" style="margin-top:6px" onclick="updateProgress()">Update</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="container" id="challenge">
+  <h2 class="section-title" contenteditable="true">The Challenge</h2>
+  <p class="muted" contenteditable="true">100 kilometres. One month. One goal: help create a stronger culture of support for young people who umpire and officiate sport.</p>
+  <div class="grid">
+    <div class="card"><div class="big">100K</div><h3 contenteditable="true">Distance</h3><p contenteditable="true">My target is to run 100 kilometres throughout November.</p></div>
+    <div class="card"><div class="big">30 DAYS</div><h3 contenteditable="true">November</h3><p contenteditable="true">Every kilometre will help build momentum for the cause.</p></div>
+    <div class="card"><div class="big">$1K</div><h3 contenteditable="true">Goal</h3><p contenteditable="true">I'm aiming to raise $1,000 for young umpires' mental health.</p></div>
+  </div>
+</section>
+
+<section class="container" id="why">
+  <h2 class="section-title" contenteditable="true">Why I'm Doing It</h2>
+  <div class="card">
+    <p contenteditable="true">Young umpires and officials are an important part of sport. They can face pressure, criticism and difficult moments while learning and developing. I want this challenge to encourage people to talk about mental health, support young officials and make sport a positive place for everyone.</p>
+    <p contenteditable="true">This fundraiser is about showing young umpires that their wellbeing matters — on the field, on the court and away from sport too.</p>
+  </div>
+</section>
+
+<section class="container">
+  <h2 class="section-title" contenteditable="true">How It Works</h2>
+  <div class="steps">
+    <div class="step"><h3 contenteditable="true">Run</h3><p contenteditable="true">Complete 100 kilometres across November.</p></div>
+    <div class="step"><h3 contenteditable="true">Share</h3><p contenteditable="true">Post updates, kilometres and milestones to help spread the message.</p></div>
+    <div class="step"><h3 contenteditable="true">Raise</h3><p contenteditable="true">Work towards the $1,000 fundraising goal.</p></div>
+  </div>
+</section>
+
+<section class="container" id="support">
+  <h2 class="section-title" contenteditable="true">Want to Support?</h2>
+  <div class="card">
+    <p contenteditable="true">Every donation, share and message helps. Click the button below to donate through your fundraiser.</p>
+    <a id="donateLink" class="btn" href="https://blackdoginstitute.grassrootz.com/donate-danny-frawley-community/donate" target="_blank">DONATE NOW ❤️</a>
+    <div class="edit-note">EDIT THIS: Change the donation link in the HTML from <b>https://blackdoginstitute.grassrootz.com/donate-danny-frawley-community/donate</b> to your real fundraising page.</div>
+  </div>
+</section>
+
+<section class="container">
+  <h2 class="section-title" contenteditable="true">Follow the Journey</h2>
+  <div class="grid">
+    <div class="card"><h3 contenteditable="true">🏃 Running updates</h3><p contenteditable="true">Add your Instagram, TikTok or other social link here.</p></div>
+    <div class="card"><h3 contenteditable="true">📈 Milestones</h3><p contenteditable="true">Add your 25K, 50K, 75K and 100K updates.</p></div>
+    <div class="card"><h3 contenteditable="true">❤️ The reason</h3><p contenteditable="true">Keep the focus on supporting young umpires and mental health.</p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p contenteditable="true"><strong>Zaiden West • 100K for Young Umpires • November 2026</strong></p>
+  <p contenteditable="true">100 kilometres. $1,000 goal. Supporting young umpires across Australian sport.</p>
+</footer>
+
+<div class="editor">
+  ✏️ Click text to edit
+  <button onclick="savePage()">Save edits</button>
+  <button onclick="resetPage()">Reset</button>
+</div>
+
+<script>
+const editable=[...document.querySelectorAll('[contenteditable="true"]')];
+function savePage(){
+  editable.forEach((el,i)=>localStorage.setItem('zaiden-edit-'+i,el.innerHTML));
+  localStorage.setItem('zaiden-raised',document.getElementById('raisedInput').value);
+  alert('Your edits are saved on this browser.');
+}
+function loadPage(){
+  editable.forEach((el,i)=>{const v=localStorage.getItem('zaiden-edit-'+i);if(v!==null)el.innerHTML=v});
+  const r=localStorage.getItem('zaiden-raised');if(r!==null)document.getElementById('raisedInput').value=r;
+  updateProgress();
+}
+function resetPage(){if(confirm('Reset your saved edits on this browser?')){editable.forEach((_,i)=>localStorage.removeItem('zaiden-edit-'+i));localStorage.removeItem('zaiden-raised');location.reload()}}
+function updateProgress(){
+  const raised=Math.max(0,Number(document.getElementById('raisedInput').value)||0);
+  const pct=Math.min(100,Math.round(raised/1000*100));
+  document.getElementById('raisedText').textContent='$'+raised.toLocaleString();
+  document.getElementById('percent').textContent=pct+'%';
+  document.getElementById('bar').style.width=pct+'%';
+}
+loadPage();
+</script>
+</body>
+</html>
